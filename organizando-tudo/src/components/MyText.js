@@ -1,5 +1,8 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import {
+    Text,
+    StyleSheet
+} from 'react-native';
 
 export default function MyText({ children, style }) {
 
@@ -7,7 +10,7 @@ export default function MyText({ children, style }) {
 
     if (style?.fontWeight === 'bold') {
         receivedStyle = styles.myBoldText;
-    } else{
+    } else {
         receivedStyle = styles.myText;
     }
 

@@ -1,14 +1,13 @@
-import React from 'react';
 import {
     StyleSheet,
     Dimensions,
-    TouchableOpacity,
     View
 } from 'react-native';
 
 import MyText from '../../components/MyText';
 import MyButton from '../../components/MyButton';
 import MyLink from '../../components/MyLink';
+import MyInput from '../../components/MyInput';
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -19,12 +18,22 @@ export default function Login({ login }) {
 
             <MyText style={styles.title}>{login.displayAppName}</MyText>
 
-            <MyText style={styles.entries}>{login.txtApelido}</MyText>
-            <MyText style={styles.entries}>{login.txtSenha}</MyText>
+            <MyInput style={styles.entries} password={false} returnType='next'>{login.txtNickname}</MyInput>
+            <MyInput style={styles.entries} password={true} onSubmitEditing={() => {
+                // Login method
+            }}>{login.txtPassword}</MyInput>
 
-            <MyButton style={styles.button}>{login.button}</MyButton>
+            <MyButton style={styles.button} onPress={() => {
+                // Login method
+            }}>{login.button}</MyButton>
 
-            <MyLink style={styles.link}>{login.link}</MyLink>
+            <MyLink style={styles.newAccount} onPress={() => {
+                // Page 'Create new Account'
+            }}>{login.newAccount}</MyLink>
+            
+            <MyLink style={styles.lostPassword} onPress={() => {
+                // Page 'Recover Password'
+            }}>{login.lostPassword}</MyLink>
 
         </View>
     </>
@@ -42,17 +51,21 @@ const styles = StyleSheet.create({
         marginBottom: '1%',
     },
     entries: {
-        width: '100%',
-        textAlign: 'center',
-        padding: 10,
-        fontSize: 30,
-    },
-    button:{
-        width: '90%',
+        width: '95%',
+        marginBottom: '3%',
         alignSelf: 'center',
-        marginTop: '10%',
     },
-    link:{
+    button: {
+        width: '95%',
+        alignSelf: 'center',
+        marginTop: '8%',
+    },
+    newAccount: {
+        marginTop: '6%',
+        alignSelf: 'center',
+    },
+    lostPassword: {
+        width: '35%',
         marginTop: '6%',
         alignSelf: 'center',
     }

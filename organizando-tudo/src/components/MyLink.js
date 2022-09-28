@@ -1,10 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import {
+    TouchableOpacity,
+    StyleSheet
+} from 'react-native';
 
 import MyText from './MyText';
 
 export default function MyButton({ children, style }) {
-    return <TouchableOpacity style={[style,styles.container]}>
+    return <TouchableOpacity style={[styles.container, style]}>
         <MyText style={styles.link}>{children}</MyText>
     </TouchableOpacity>
 }

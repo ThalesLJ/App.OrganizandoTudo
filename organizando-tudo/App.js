@@ -1,13 +1,13 @@
 import {
   StatusBar,
-  SafeAreaView,
-  View
+  SafeAreaView
 } from 'react-native';
+
+import AppLoading from 'expo-app-loading';
+
 import Strings from './src/strings/strings';
 import Login from './src/pages/Login/index';
 import Home from './src/pages/Home/index';
-
-import AppLoading from 'expo-app-loading';
 
 import {
   useFonts,

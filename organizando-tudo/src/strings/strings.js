@@ -2,9 +2,10 @@ const strings = {
     login: {
         displayAppName: 'Organizando Tudo',
         button: 'Acessar',
-        link: 'Criar Conta',
-        txtApelido: 'Apelido',
-        txtSenha: 'Senha'
+        newAccount: 'Criar Conta',
+        lostPassword: 'Recuperar Senha',
+        txtNickname: 'Apelido',
+        txtPassword: 'Senha'
     },
     sucessMessage: 'OK',
     errorMessage: 'ERROR'
