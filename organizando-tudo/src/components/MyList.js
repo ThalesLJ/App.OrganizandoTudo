@@ -1,9 +1,12 @@
+import { Montserrat_100Thin } from '@expo-google-fonts/montserrat';
 import React, { useEffect, useState } from 'react';
 import {
     TouchableOpacity,
     StyleSheet,
     View
 } from 'react-native';
+
+import { Feather } from 'react-native-vector-icons';
 
 import MyText from './MyText';
 
@@ -23,10 +26,26 @@ export default function MyList({ titulo, nota, children, style }) {
     }, []);
 
     return <View style={styles.container}>
+
         <MyText style={styles.titulo}>
             {titulo}</MyText>
         <MyText style={styles.previa}>
             {previa}</MyText>
+
+        <View style={styles.optionBar}>
+            <TouchableOpacity>
+                <Feather
+                    name='copy' color='#35C0ED' size={20}>
+                </Feather>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+                <Feather
+                    name='x' color='red' size={25}>
+                </Feather>
+            </TouchableOpacity>
+        </View>
+
     </View>
 }
 
@@ -48,7 +67,9 @@ const styles = StyleSheet.create({
         fontSize: 10,
         marginTop: 15
     },
-    share: {
-        backgroundColor: '#F6F6F6',
+    optionBar: {
+        flex: 1,
+        justifyContent: "flex-end",
+        flexDirection: "row",
     }
 });
