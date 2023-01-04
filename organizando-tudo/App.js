@@ -5,9 +5,10 @@ import {
 
 import AppLoading from 'expo-app-loading';
 
-import Strings from './src/strings/strings';
 import Login from './src/pages/Login/index';
 import Home from './src/pages/Home/index';
+
+import Strings from './src/strings/strings';
 
 import {
   useFonts,
@@ -29,7 +30,7 @@ export default function App() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar />
-      <Login {...Strings} />
+      <Home {...Strings} />
     </SafeAreaView>
   );
 }

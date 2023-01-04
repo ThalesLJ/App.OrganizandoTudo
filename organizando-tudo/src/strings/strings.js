@@ -7,6 +7,9 @@ const strings = {
         txtNickname: 'Apelido',
         txtPassword: 'Senha'
     },
+    home: {
+        headerTitle: 'NOTAS',
+    },
     sucessMessage: 'OK',
     errorMessage: 'ERROR'
 }
