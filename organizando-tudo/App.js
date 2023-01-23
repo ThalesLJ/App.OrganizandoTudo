@@ -1,5 +1,4 @@
 import { StatusBar, SafeAreaView } from 'react-native';
-import AppLoading from 'expo-app-loading';
 import AppRoutes from './src/routes/AppRoutes/AppRoutes';
 
 import {
@@ -16,7 +15,8 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />
+    // return <AppLoading />
+    return <SafeAreaView />
   }
 
   return (
