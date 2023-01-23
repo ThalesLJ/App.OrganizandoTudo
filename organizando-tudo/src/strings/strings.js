@@ -10,6 +10,9 @@ const strings = {
     home: {
         headerTitle: 'NOTAS',
     },
+    configs: {
+        headerTitle: 'CONFIGURAÇÕES',
+    },
     sucessMessage: 'OK',
     errorMessage: 'ERROR'
 }

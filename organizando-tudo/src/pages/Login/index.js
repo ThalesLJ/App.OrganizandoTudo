@@ -1,48 +1,61 @@
+import React from 'react';
 import {
     StyleSheet,
     Dimensions,
     View
 } from 'react-native';
+import {
+    SafeAreaProvider,
+    useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 import MyText from '../../components/MyText';
 import MyButton from '../../components/MyButton';
 import MyLink from '../../components/MyLink';
 import MyInput from '../../components/MyInput';
 
+import { useNavigation } from '@react-navigation/native';
+
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
 
 export default function Login({ login }) {
-    return <>
-        <View style={styles.container}>
+    const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
 
-            <MyText style={styles.title}>{login.displayAppName}</MyText>
+    return <View style={[
+        styles.container,
+        {
+            paddingTop: insets.top,
+            paddingBottom: insets.bottom,
+            paddingLeft: insets.left,
+            paddingRight: insets.right,
+        },
+    ]} >
 
-            <MyInput style={styles.entries} password={false} returnType='next'>{login.txtNickname}</MyInput>
-            <MyInput style={styles.entries} password={true} onSubmitEditing={() => {
-                // Login method
-            }}>{login.txtPassword}</MyInput>
+        <MyText style={styles.title}>{login.displayAppName}</MyText>
 
-            <MyButton style={styles.button} onPress={() => {
-                // Login method
-            }}>{login.button}</MyButton>
+        <MyInput style={styles.entries} password={false} returnType='next'>{login.txtNickname}</MyInput>
+        <MyInput style={styles.entries} password={true} onSubmitEditing={() => {
+            // Login method
+        }}>{login.txtPassword}</MyInput>
 
-            <MyLink style={styles.newAccount} onPress={() => {
-                // Page 'Create new Account'
-            }}>{login.newAccount}</MyLink>
-            
-            <MyLink style={styles.lostPassword} onPress={() => {
-                // Page 'Recover Password'
-            }}>{login.lostPassword}</MyLink>
+        <MyButton style={styles.button} onPress={() => {
+            navigation.navigate('TabRoutes');
+        }}>{login.button}</MyButton>
 
-        </View>
-    </>
+        <MyLink style={styles.newAccount} onPress={() => {
+            // Page 'Create new Account'
+        }}>{login.newAccount}</MyLink>
+
+        <MyLink style={styles.lostPassword} onPress={() => {
+            // Page 'Recover Password'
+        }}>{login.lostPassword}</MyLink>
+
+    </View>
 }
 
 const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-    },
     title: {
         width: '100%',
         textAlign: 'center',
@@ -51,12 +64,12 @@ const styles = StyleSheet.create({
         marginBottom: '1%',
     },
     entries: {
-        width: '95%',
+        width: '90%',
         marginBottom: '3%',
         alignSelf: 'center',
     },
     button: {
-        width: '95%',
+        width: '90%',
         alignSelf: 'center',
         marginTop: '8%',
     },

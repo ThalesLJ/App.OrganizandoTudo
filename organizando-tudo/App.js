@@ -1,14 +1,6 @@
-import {
-  StatusBar,
-  SafeAreaView
-} from 'react-native';
-
+import { StatusBar, SafeAreaView } from 'react-native';
 import AppLoading from 'expo-app-loading';
-
-import Login from './src/pages/Login/index';
-import Home from './src/pages/Home/index';
-
-import Strings from './src/strings/strings';
+import AppRoutes from './src/routes/AppRoutes/AppRoutes';
 
 import {
   useFonts,
@@ -30,7 +22,7 @@ export default function App() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar />
-      <Home {...Strings} />
+      <AppRoutes />
     </SafeAreaView>
   );
 }

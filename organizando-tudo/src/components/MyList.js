@@ -25,7 +25,7 @@ export default function MyList({ titulo, nota, children, style }) {
 
     }, []);
 
-    return <View style={styles.container}>
+    return <TouchableOpacity style={styles.container}>
 
         <MyText style={styles.titulo}>
             {titulo}</MyText>
@@ -46,7 +46,7 @@ export default function MyList({ titulo, nota, children, style }) {
             </TouchableOpacity>
         </View>
 
-    </View>
+    </TouchableOpacity>
 }
 
 const styles = StyleSheet.create({

@@ -6,8 +6,8 @@ import {
 
 import MyText from './MyText';
 
-export default function MyButton({ children, style }) {
-    return <TouchableOpacity style={[style, styles.button]}>
+export default function MyButton({ children, style, onPress }) {
+    return <TouchableOpacity style={[style, styles.button]} onPress={onPress}>
         <MyText style={styles.text}>
             {children}
         </MyText>
