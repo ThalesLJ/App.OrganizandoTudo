@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    TextInput,
-    StyleSheet
-} from 'react-native';
+import { TextInput, StyleSheet } from 'react-native';
 
 export default function MyInput({ children, style, password, returnType }) {
     return <TextInput

@@ -1,11 +1,6 @@
 import { StatusBar, SafeAreaView } from 'react-native';
 import AppRoutes from './src/routes/AppRoutes/AppRoutes';
-
-import {
-  useFonts,
-  Montserrat_400Regular,
-  Montserrat_600SemiBold
-} from '@expo-google-fonts/montserrat';
+import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold } from '@expo-google-fonts/montserrat';
 
 export default function App() {
 

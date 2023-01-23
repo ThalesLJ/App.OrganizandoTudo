@@ -1,14 +1,8 @@
-import { Montserrat_100Thin } from '@expo-google-fonts/montserrat';
 import React, { useEffect, useState } from 'react';
-import {
-    TouchableOpacity,
-    StyleSheet,
-    View
-} from 'react-native';
-
-import { Feather } from 'react-native-vector-icons';
-
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import MyText from './MyText';
+import { Feather } from 'react-native-vector-icons';
+import { Montserrat_100Thin } from '@expo-google-fonts/montserrat';
 
 export default function MyList({ titulo, nota, children, style }) {
 

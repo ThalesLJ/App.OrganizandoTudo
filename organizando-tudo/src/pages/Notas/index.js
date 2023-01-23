@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {
-    FlatList,
-    StyleSheet,
-    View,
-    Dimensions
-} from 'react-native';
-import {
-    SafeAreaProvider,
-    useSafeAreaInsets,
-  } from 'react-native-safe-area-context';
-
+import { FlatList, StyleSheet, View, Dimensions } from 'react-native';
 import MyText from '../../components/MyText';
 import MyList from '../../components/MyList';
-
-import { getNotas, insertNotas, updateNotas, deleteNotas } from '../../services/notas';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import { GET_NOTAS } from '../../services/api/notas';
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -25,7 +15,11 @@ export default function Home({ home }) {
     const [notas, setNotas] = useState([]);
 
     useEffect(() => {
-        setNotas(getNotas);
+        const ListNotas = async () => {
+            const resultado = GET_NOTAS();
+            if (resultado) setNotas(await GET_NOTAS());
+        }
+        setNotas(ListNotas());
     }, []);
 
     return <View style={[

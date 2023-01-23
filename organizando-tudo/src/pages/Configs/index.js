@@ -1,15 +1,7 @@
 import React from 'react';
-import {
-    View,
-    Text,
-    StyleSheet,
-    Dimensions
-} from 'react-native';
-
-import { useSafeAreaInsets, } from 'react-native-safe-area-context';
-
+import { View, StyleSheet, Dimensions } from 'react-native';
 import MyText from '../../components/MyText';
-
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 
 const width = Dimensions.get('screen').width;

@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-    TouchableOpacity,
-    StyleSheet
-} from 'react-native';
-
+import { TouchableOpacity, StyleSheet } from 'react-native';
 import MyText from './MyText';
 
 export default function MyButton({ children, style, onPress }) {

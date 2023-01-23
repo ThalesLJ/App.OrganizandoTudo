@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Feather } from 'react-native-vector-icons';
-
 import HomeScreen from './HomeScreen';
 import ConfigsScreen from './ConfigsScreen';
 
@@ -23,25 +22,24 @@ export default function TabRoutes() {
 
     return (
         <NavigationContainer independent={true}>
-            <Tab.Navigator screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused }) => {
-                    let iconName = 'home';
-                    let iconColor = '#35C0ED';
+            <Tab.Navigator initialRouteName="Notas" barStyle={{ backgroundColor: '#F6F6F6' }}
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused }) => {
+                        let iconName = 'home';
+                        let iconColor = '#35C0ED';
 
-                    if (route.name === 'Notas') {
-                        iconName = 'book';
-                        iconColor = focused ? '#35C0ED': '#C7C7C7';
-                    } else {
-                        iconName = 'settings';
-                        iconColor = focused ? '#35C0ED': '#C7C7C7';
-                    }
+                        if (route.name === 'Notas') {
+                            iconName = 'book';
+                            iconColor = focused ? '#35C0ED' : '#C7C7C7';
+                        } else {
+                            iconName = 'settings';
+                            iconColor = focused ? '#35C0ED' : '#C7C7C7';
+                        }
 
-                    return <Feather name={iconName} color={iconColor} size={20} />
-                },
-                tabBarActiveTintColor: '#35C0ED',
-                tabBarInactiveTintColor: '#C7C7C7',
-                tabBarColor: '#35C0ED'
-            })}>
+                        return <Feather name={iconName} color={iconColor} size={20} />
+                    },
+                    tabBarStyle: { backgroundColor: '#F6F6F6' }
+                })}>
                 <Tab.Screen name="Notas" component={HomeScreen} />
                 <Tab.Screen name="Configs" component={ConfigsScreen} />
             </Tab.Navigator>

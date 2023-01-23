@@ -1,19 +1,10 @@
 import React from 'react';
-import {
-    StyleSheet,
-    Dimensions,
-    View
-} from 'react-native';
-import {
-    SafeAreaProvider,
-    useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
+import { StyleSheet, Dimensions, View } from 'react-native';
 import MyText from '../../components/MyText';
 import MyButton from '../../components/MyButton';
 import MyLink from '../../components/MyLink';
 import MyInput from '../../components/MyInput';
-
+import { useSafeAreaInsets, } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 
 const width = Dimensions.get('screen').width;
@@ -41,6 +32,7 @@ export default function Login({ login }) {
         }}>{login.txtPassword}</MyInput>
 
         <MyButton style={styles.button} onPress={() => {
+
             navigation.navigate('TabRoutes');
         }}>{login.button}</MyButton>
 
