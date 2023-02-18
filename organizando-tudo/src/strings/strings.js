@@ -14,6 +14,7 @@ const strings = {
     },
     configs: {
         headerTitle: 'CONFIGURAÇÕES',
+        btnLogout: "DESCONECTAR"
     },
     sucessMessage: 'OK',
     errorMessage: 'ERROR',

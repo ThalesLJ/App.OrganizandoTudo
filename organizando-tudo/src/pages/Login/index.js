@@ -24,20 +24,23 @@ export default function Login({ login }) {
         const VerifySession = async () => {
             let session = { apelido: '', email: '', senha: '', token: '', manter: '' };
             const resultado = await GetSession();
-            for (let i = 0; i < resultado.length; i++) {
-                if(resultado[i][0] == 'apelido') session.apelido = resultado[i][1];
-                if(resultado[i][0] == 'email') session.email = resultado[i][1];
-                if(resultado[i][0] == 'senha') session.senha = resultado[i][1];
-                if(resultado[i][0] == 'token') session.token = resultado[i][1];
-                if(resultado[i][0] == 'manter') session.manter = resultado[i][1];
-            }
-            // setSession(session);
+            
+            if (resultado.length > 0) {
+                for (let i = 0; i < resultado.length; i++) {
+                    if (resultado[i][0] == 'apelido') session.apelido = resultado[i][1];
+                    if (resultado[i][0] == 'email') session.email = resultado[i][1];
+                    if (resultado[i][0] == 'senha') session.senha = resultado[i][1];
+                    if (resultado[i][0] == 'token') session.token = resultado[i][1];
+                    if (resultado[i][0] == 'manter') session.manter = resultado[i][1];
+                }
+                // setSession(session);
 
-            if(session.manter == 'true'){
-                navigation.navigate('TabRoutes');
-            }
-            else{
-                await DeleteSessions();
+                if (session.manter == 'true') {
+                    navigation.navigate('TabRoutes');
+                }
+                else {
+                    await DeleteSessions();
+                }
             }
         }
         VerifySession();
@@ -47,9 +50,10 @@ export default function Login({ login }) {
         try {
             const resultado = await APILogin(apelido, senha);
             if (resultado.Token != null) {
-                await DeleteSessions();
+                const session = await GetSession();
+                if (session.length > 0) { await DeleteSessions(); }
                 await CreateSession(apelido, resultado.Email, senha, resultado.Token, 'true');
-                // navigation.navigate('TabRoutes');
+                navigation.navigate('TabRoutes');
             }
             else {
                 Alert.alert(login.page, login.userNotFound);

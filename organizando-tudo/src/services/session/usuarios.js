@@ -10,11 +10,15 @@ export async function CreateSession(apelido, email, password, token, manter) {
 
 export async function GetSession() {
     const sessionsKeys = await AsyncStorage.getAllKeys();
-    const sessions = await AsyncStorage.multiGet(sessionsKeys);
-    return sessions;
+    if (sessionsKeys !== null) {
+        const sessions = await AsyncStorage.multiGet(sessionsKeys);
+        return sessions;
+    }
 };
 
 export async function DeleteSessions() {
     const sessionsKeys = await AsyncStorage.getAllKeys();
-    await AsyncStorage.multiRemove(sessionsKeys);
+    if (sessionsKeys !== null) {
+        await AsyncStorage.multiRemove(sessionsKeys);
+    }
 };
