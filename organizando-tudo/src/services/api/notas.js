@@ -1,11 +1,22 @@
 import axios from "axios";
+import { GetSession } from "../session/usuarios";
 
 const api = axios.create({
     baseURL: 'https://data.mongodb-api.com/app/application-0-mqvuy/endpoint',
 });
 
-export function GET_NOTAS() {
-    return api.get('/Notas', { headers: { 'Authorization': 'Bearer fc25ae986c621268d70694f1f32a907320c23722058e46d815bf0cc6a135d3d4' } })
+let token = '';
+
+async function GetToken() {
+    const resultado = await GetSession();
+    for (let i = 0; i < resultado.length; i++) {
+        if (resultado[i][0] == 'token') token = 'Bearer ' + (resultado[i][1]).toString();
+    }
+}
+
+export async function GET_NOTAS() {
+    await GetToken();
+    return api.get('/Notas', { headers: { 'Authorization': token } })
         .then(response => {
             return response.data;
         })

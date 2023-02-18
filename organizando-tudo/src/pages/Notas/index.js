@@ -5,6 +5,7 @@ import MyList from '../../components/MyList';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { GET_NOTAS } from '../../services/api/notas';
+import { GetSession } from '../../services/session/usuarios';
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -13,11 +14,26 @@ export default function Home({ home }) {
     const insets = useSafeAreaInsets();
 
     const [notas, setNotas] = useState([]);
+    const [session, setSession] = useState('');
 
     useEffect(() => {
+        const VerifySession = async () => {
+            let session = { apelido: '', email: '', senha: '', token: '', manter: '' };
+            const resultado = await GetSession();
+            for (let i = 0; i < resultado.length; i++) {
+                if(resultado[i][0] == 'apelido') session.apelido = resultado[i][1];
+                if(resultado[i][0] == 'email') session.email = resultado[i][1];
+                if(resultado[i][0] == 'senha') session.senha = resultado[i][1];
+                if(resultado[i][0] == 'token') session.token = resultado[i][1];
+                if(resultado[i][0] == 'manter') session.manter = resultado[i][1];
+            }
+            setSession(session);
+        }
+        VerifySession();
+
         const ListNotas = async () => {
-            const resultado = GET_NOTAS();
-            if (resultado) setNotas(await GET_NOTAS());
+            const resultado = await GET_NOTAS();
+            setNotas(resultado);
         }
         setNotas(ListNotas());
     }, []);

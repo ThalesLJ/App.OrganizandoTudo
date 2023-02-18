@@ -1,12 +1,14 @@
 import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
-export default function MyInput({ children, style, password, returnType }) {
+export default function MyInput({ children, placeholder, style, password, returnType, value, onChangeText }) {
     return <TextInput
-        placeholder={children}
+        placeholder={placeholder}
         style={[style, styles.input]}
         secureTextEntry={password}
         returnKeyType={returnType}
+        value={value}
+        onChangeText={onChangeText}
     />
 }
 
